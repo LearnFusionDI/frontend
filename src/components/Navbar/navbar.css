@@ -1,0 +1,163 @@
+.navbar {
+    padding: 1rem 10%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.2), 0 1px 10px 0 rgba(0, 0, 0, 0.19); */
+}
+
+.navbar .brand {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: black;
+    gap: 5px;
+}
+
+.navbar .brand .shape{
+    background-color: black;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: large;
+}
+
+.navbar .brand .text {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: large;
+}
+.navbar .navbar-list {
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+}
+
+.navbar .navbar-list .navbar-item {
+    list-style: none;
+}
+
+.navbar .navbar-list .navbar-link{
+    text-decoration: none;
+    display: block;
+    color: black;
+    font-size: large;
+    padding: 2px 20px;
+}
+
+
+.register-btn {
+    background-color: #0066ff;
+    color: #fff !important;
+    border: 1px solid #0066ff;
+    border-radius: 20px;
+}
+.register-btn:hover {
+    border: 1px solid #0066ff;
+    background-color: #fff;
+    color: #0066ff !important;
+}
+
+.login-btn {
+    transition: color .15s ease-in-out, border .15s ease-in-out;
+    border: 1px solid #fff;
+    border-radius: 20px;
+}
+.login-btn:hover {
+  border: 1px solid #0066ff;
+  border-radius: 20px;
+  color: #0066ff !important;
+}
+
+.navbar .toggle-btn{
+    font-size:xx-large;
+    cursor: pointer;
+    display: none;
+}
+
+.navbar .navbar-list .mobile-logo {
+    display: none;
+}
+
+.navbar .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: hsl(0, 2%, 12%);
+    pointer-events: none;
+    opacity: 0;
+    transition: 0.25s ease;
+}
+
+.navbar .overlay.active {
+    pointer-events: all;
+    opacity: 0.8;
+}
+
+
+@media (max-width: 576px) { 
+    .navbar {
+        padding: 1rem;
+    }
+
+    .navbar .navbar-list {
+        position: fixed;
+        top: 0;
+        left: -300px;
+        background-color: #fff;
+        width: 100%;
+        max-width: 23.5rem;
+        height: 100vh;
+        padding: 1.875rem;
+        -webkit-padding-after: 1.25rem;
+        padding-block-end: 1.25rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        z-index: 2;
+        visibility: hidden;
+        transition: 0.3s ease-in-out;
+    }
+
+    .navbar .navbar-list .mobile-logo {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .toggle-close {
+        font-size: x-large;
+        cursor: pointer;
+    }
+
+    .navbar .navbar-list.active {
+        visibility: visible;
+        transform: translateX(300px);
+    }
+    .login-btn, .register-btn{
+        padding-bottom: 2rem;
+        width: fit-content;
+    }
+
+    .navbar .toggle-btn{ 
+        display: block;
+    }
+ }
+
+/* @media (min-width: 768px) { 
+     .navbar {
+        padding: 0.1rem;
+    }
+ } */
+
+@media (min-width: 992px) {  }
+
+@media (min-width: 1200px) {  }
+
+@media (min-width: 1400px) {  }
