@@ -1,0 +1,15 @@
+.footer {
+    padding-inline: 20px;
+    background: rgba(49, 17, 41, 0.9);
+    color: white;
+}
+
+.footer p{
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 14px;
+}
+
+.footer .container {
+    display: flex;
+    justify-content: space-between;
+}

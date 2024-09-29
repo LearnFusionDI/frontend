@@ -10,6 +10,7 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <BrowserRouter>
+      <div className="overlay-onload"></div>
       <App />
     </BrowserRouter>
   </React.StrictMode>

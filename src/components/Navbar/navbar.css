@@ -3,7 +3,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    /* box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.2), 0 1px 10px 0 rgba(0, 0, 0, 0.19); */
+    z-index: 2;
 }
 
 .navbar .brand {
@@ -47,7 +47,8 @@
     display: block;
     color: black;
     font-size: large;
-    padding: 2px 20px;
+    padding: 5px 20px;
+    font-family: 'Courier New', Courier, monospace;
 }
 
 

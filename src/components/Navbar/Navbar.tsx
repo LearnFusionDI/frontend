@@ -28,12 +28,12 @@ const Navbar: React.FC = () => {
           />
         </div>
         <li className="navbar-item">
-          <Link to={""} className="navbar-link login-btn">
+          <Link to={"/login"} className="navbar-link login-btn">
             Login
           </Link>
         </li>
         <li className="navbar-item">
-          <Link to={""} className="navbar-link register-btn">
+          <Link to={"/register"} className="navbar-link register-btn">
             Register
           </Link>
         </li>

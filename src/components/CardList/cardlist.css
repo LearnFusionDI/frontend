@@ -1,0 +1,22 @@
+.card-list {
+    display: flex;
+    gap: 10px;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.card-list-title{
+    font-family: 'Courier New', Courier, monospace;
+}
+
+@media (max-width: 576px) { 
+    .card-list {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 768px) {
+    .card-list {
+        flex-direction: column;
+    }
+ }
