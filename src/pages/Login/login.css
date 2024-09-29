@@ -1,0 +1,95 @@
+.login {
+    display: flex;
+
+}
+
+.login .left{
+    flex: 1;
+    /* height: 100vh; */
+    background: lightgrey;
+}
+
+.login .left .input-content{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 6rem;
+}
+
+.login .left .input-content h3 {
+    font-size: large;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.login .left .input-content .dont-have-account {
+    font-size: large;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.login .left .input-content .dont-have-account a{
+    color: #0066ff;
+}
+
+.login .left .input-content .input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-block-end: 20px;
+    width: 80%;
+}
+
+.login .left .input-content .input-group label {
+    font-size: large;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.login .left .input-content .input-group input {
+    width: 100%;
+    padding: 20px 30px;
+    border: 1px solid white;
+    outline: none;
+    border-radius: 10px;
+}
+
+.login .left .input-content .input-group input:focus{
+    border: 1px solid #0066ff;
+}
+
+.login .left .input-content button {
+    width: fit-content;
+    padding: 10px 40px;
+    background: #0066ff;
+    color: #fff;
+    border: 1px solid #0066ff;
+    font-size: large;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: color .15s ease-in-out;
+}
+
+.login .left .input-content button:hover{
+    background: #fff;
+    color: #0066ff;
+}
+
+.login .right {
+    flex: 1;
+    height: 100vh;
+    background-image:
+    linear-gradient(to right, rgba(11, 11, 11, 0.7), rgba(49, 17, 41, 0.9)),
+    url('../../../public/images/background.jpg');
+}
+
+@media (max-width: 576px) {
+    .login .right {
+        display: none;
+    }
+
+    .login .left{
+        height: 95.4vh;
+    }
+ }
+
+@media (max-width: 768px) {
+
+ }

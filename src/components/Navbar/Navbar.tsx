@@ -4,16 +4,14 @@ import { MdClose } from "react-icons/md";
 import { Link } from 'react-router-dom';
 
 import './navbar.css'
+import Logo from '../Logo/Logo';
 
 const Navbar: React.FC = () => {
     const [isOpen, setIsOpen] = useState<boolean>(false);
 
   return (
     <nav className="navbar">
-      <Link to={"/"} className="brand">
-        <div className="shape">LF</div>
-        <span className="text">LearnFusion</span>
-      </Link>
+      <Logo />
       <CiMenuFries className="toggle-btn" onClick={() => setIsOpen(!isOpen)} />
 
       <ul className={`navbar-list ${isOpen ? "active" : ""}`}>

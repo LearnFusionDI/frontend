@@ -1,0 +1,25 @@
+.brand {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: black;
+    gap: 5px;
+}
+
+.brand .shape{
+    background-color: black;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: large;
+}
+
+.brand .text {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: large;
+}
