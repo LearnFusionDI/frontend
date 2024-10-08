@@ -28,12 +28,26 @@
     color: #0066ff;
 }
 
+.register .left .input-content .row-input {
+    display: flex;
+    width: 100%;
+    gap: 10px;
+}
+
+.register .left .input-content .row-input .input-group{
+    gap: 10px;
+}
+
+.register .left .input-content .row-input .input-group input{
+    width: 85%;
+}
+
 .register .left .input-content .input-group {
     display: flex;
     flex-direction: column;
     gap: 5px;
-    margin-block-end: 20px;
-    width: 80%;
+    margin-block-end: 10px;
+    width: 100%;
 }
 
 .register .left .input-content .input-group label {
@@ -42,11 +56,10 @@
 }
 
 .register .left .input-content .input-group input {
-    width: 100%;
-    padding: 20px;
-    border: 1px solid white;
+    width: 92%;
+    padding: 15px;
     outline: none;
-    border-radius: 10px;
+    border-radius: 5px;
 }
 
 .register .left .input-content .input-group input:focus{
@@ -55,12 +68,12 @@
 
 .register .left .input-content button {
     width: fit-content;
-    padding: 10px 40px;
+    padding: 10px 30px;
     background: #0066ff;
     color: #fff;
     border: 1px solid #0066ff;
     font-size: large;
-    border-radius: 10px;
+    border-radius: 5px;
     cursor: pointer;
     transition: color .15s ease-in-out;
 }
@@ -70,9 +83,20 @@
     color: #0066ff;
 }
 
+.invalid {
+    border: 1px solid rgb(240, 90, 90);
+}
+
+.error {
+    color: rgb(240, 90, 90);
+    font-size: large;
+}
+
+
 .register .right {
     flex: 1;
     height: 100vh;
+    padding: 20px;
     background-image:
     linear-gradient(to right, rgba(11, 11, 11, 0.7), rgba(49, 17, 41, 0.9)),
     url('../../../public/images/background.jpg');

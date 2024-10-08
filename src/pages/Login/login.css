@@ -45,12 +45,14 @@
 
 .login .left .input-content .input-group input {
     width: 100%;
-    padding: 20px 30px;
-    border: 1px solid white;
+    padding: 15px;
     outline: none;
-    border-radius: 10px;
+    border-radius: 5px;
 }
 
+.valid-border{
+    border: 1px solid #fff;
+}
 .login .left .input-content .input-group input:focus{
     border: 1px solid #0066ff;
 }
@@ -62,7 +64,7 @@
     color: #fff;
     border: 1px solid #0066ff;
     font-size: large;
-    border-radius: 10px;
+    border-radius: 5px;
     cursor: pointer;
     transition: color .15s ease-in-out;
 }
@@ -70,6 +72,15 @@
 .login .left .input-content button:hover{
     background: #fff;
     color: #0066ff;
+}
+
+.invalid {
+    border: 1px solid rgb(240, 90, 90);
+}
+
+.error {
+    color: rgb(240, 90, 90);
+    font-size: large;
 }
 
 .login .right {

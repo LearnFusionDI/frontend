@@ -6,10 +6,16 @@
 
 .footer p{
     font-family: 'Courier New', Courier, monospace;
-    font-size: 14px;
+    font-size: 18px;
 }
 
 .footer .container {
     display: flex;
     justify-content: space-between;
+}
+
+@media (max-width: 576px) { 
+    .footer .container {
+        flex-direction: column;
+    }
 }

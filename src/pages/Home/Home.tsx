@@ -6,9 +6,6 @@ import Hero from '../../components/Hero/Hero'
 import Category from '../../components/Category/Category'
 import CardList from '../../components/CardList/CardList'
 import Footer from '../../components/Footer/Footer'
-// interface Props {
-//   message: string;
-// }
 
 const Home: React.FC = () => {
   return (

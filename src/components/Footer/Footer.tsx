@@ -7,7 +7,7 @@ const Footer:React.FC = () => {
     <div className="footer">
       <div className="container">
         <p>LearnFussion&copy;2024</p>
-        <p>All right reserve</p>
+        <p>All right reserved</p>
       </div>
     </div>
   );
