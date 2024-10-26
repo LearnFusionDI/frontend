@@ -40,7 +40,7 @@ const Register:React.FC = () => {
         .then((response) => {
           const user = response.data.data;
           if (user) {
-            sessionStorage.setItem("user", user);
+            sessionStorage.setItem("user", JSON.stringify(user));
 
             navigate("/");
           }

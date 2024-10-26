@@ -5,6 +5,7 @@ import Register from './pages/Register/Register';
 import DetailPage from './pages/DetailPage/DetailPage';
 import Dashboard from './pages/dashboard/Dashboard';
 import Search from './pages/Search/Search';
+import { useEffect, useState } from 'react';
 
 function App() {
   return (

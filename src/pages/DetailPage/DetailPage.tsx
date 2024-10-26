@@ -22,8 +22,8 @@ const DetailPage:React.FC = () => {
   const [course, setCourse] = useState<course>();
 
   const params = useParams();
-  const courseId = params.courseId;
-  console.log(courseId)
+  const courseId = params.courseId ? params.courseId : '';
+  console.log(decodeURIComponent(courseId));
 
   const getCourse = async () => {
     //const cons = await data.find((course) => course.courseId === courseId);
@@ -38,9 +38,9 @@ const DetailPage:React.FC = () => {
     //   }
     // }
     axios
-      .get(`${baseUrl}/course/readByCourseId?courseId=${courseId}`)
+      .get(`${baseUrl}/course/readByCourseId?courseId=${decodeURIComponent(courseId)}`)
       .then((res) => {
-        console.log(res.data);
+        console.log(res.data.data);
         setCourse(res.data.data);
       })
       .catch((error) => {});

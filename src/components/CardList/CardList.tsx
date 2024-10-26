@@ -5,10 +5,10 @@ import './cardlist.css'
 import axios from 'axios';
 import { baseUrl } from '../../service/config';
 import data from '../../utils/coarses.json'
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 
-interface Coarses  {
+interface Courses  {
     courseId: string,
     courseTitle: string,
     courseDescription: string,
@@ -19,24 +19,40 @@ interface Coarses  {
 
 
 const CardList:React.FC = () => {
-  const [courses, setCourse] = useState<Array<Coarses>>();
-  //const query = 'python';
+  const [courses, setCourse] = useState<Array<Courses>>();
+  const [arts, setArts] = useState<Array<Courses>>()
+  const [dataScience, setDataScience] = useState<Array<Courses>>();
+  const [finance, setFinance] = useState<Array<Courses>>()
+  const [health, setHealth] = useState<Array<Courses>>()
+  const [mathematics, setMathematics] = useState<Array<Courses>>()
+  const [programming, setProgramming] = useState<Array<Courses>>()
+  const [science, setScience] = useState<Array<Courses>>()
+  const [technology, setTechnology] = useState<Array<Courses>>()
+  const [personalDevelopment, setPersonalDevelopment] = useState<Array<Courses>>();
 
-  const navigate = useNavigate()
 
   function useQuery() {
     return new URLSearchParams(useLocation().search);
   }
 
   const query = useQuery();
-
-  console.log(query.get('q'));
+  console.log(query.get("q"));
 
   const getCourses = async() => {
       axios
         .get(`${baseUrl}/course/get-started`)
         .then((res) => {
-          setCourse(res.data.data);
+          const arts = res.data.data.category['Arts'];
+          console.log(arts);
+          const data_science = res.data.data.category["Data Science"];
+          const finance = res.data.data.category['Finance'];
+          const health = res.data.data.category['Health'];
+          const mathematics = res.data.data.category['Mathematics'];
+          const personal_development = res.data.data.category['Personal Development'];
+          const programming = res.data.data.category['Programming'];
+          const science = res.data.data.category['Science'];
+          const technology = res.data.data.category['Technology'];
+          setCourse(arts);
         })
         .catch((error) => {
           console.log(error.error);
@@ -45,7 +61,7 @@ const CardList:React.FC = () => {
 
   const getSearchCourse = async() => {
       axios
-        .get(`${baseUrl}/course/read?searchQuery=${query}`)
+        .get(`${baseUrl}/course/read?searchQuery=${query.get("q")}`)
         .then((res) => {
           setCourse(res.data.data);
         })
@@ -53,13 +69,6 @@ const CardList:React.FC = () => {
           console.log(error.error);
         });
   }
-
-    // const getCourse = async(courseId: string) => {
-    //   const course = await courses?.find((course) => course.courseId === courseId);
-    //   localStorage.setItem('course', JSON.stringify(course));
-    //   const encodedId = encodeURIComponent(courseId);
-    //   navigate(`/course/${encodedId}`);
-    // };
 
     useEffect(()=> {
         if (query.get('q')) {
@@ -71,7 +80,6 @@ const CardList:React.FC = () => {
 
   return (
     <div className="container">
-      <h3 className="card-list-title">Latest Coarses</h3>
       <div className="card-list">
         {courses?.map((course) => (
           <Card course={course} key={course.courseId} />

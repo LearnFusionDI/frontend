@@ -57,11 +57,19 @@ const Navbar: React.FC = () => {
             </li>
           </>
         ) : (
-          <li className="navbar-item">
-            <button onClick={()=> logoutUser()} className="navbar-link logout-btn">
-              Logout
-            </button>
-          </li>
+          <>
+            <li className="navbar-item">
+              <Link to={'/dashboard'} className='dashboard-link'>Dashboard</Link>
+            </li>
+            <li className="navbar-item">
+              <button
+                onClick={() => logoutUser()}
+                className="navbar-link logout-btn"
+              >
+                Logout
+              </button>
+            </li>
+          </>
         )}
       </ul>
       <div className={`overlay ${isOpen ? "active" : ""} `}></div>

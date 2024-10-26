@@ -32,8 +32,9 @@ const Login: React.FC = () => {
       .post(`${baseUrl}/auth/login`, userData)
       .then((response) => {
         const user = response.data.data;
+        console.log(user);
         if (user) {
-          sessionStorage.setItem("user", user);
+          sessionStorage.setItem("user", JSON.stringify(user));
 
           navigate("/");
         }

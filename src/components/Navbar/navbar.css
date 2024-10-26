@@ -12,6 +12,7 @@
     display: flex;
     justify-content: space-between;
     gap: 2rem;
+    align-items: center;
 }
 
 .navbar .navbar-list .navbar-item {
@@ -55,6 +56,17 @@
     transition: color .15s ease-in-out, border .15s ease-in-out;
     border: 1px solid rgb(166, 53, 53);
     border-radius: 20px;
+}
+
+.dashboard-link {
+    text-decoration: none;
+    font-size: large;
+    text-align: center;
+    color: black;
+}
+
+.dashboard-link:hover{
+    text-decoration: underline;
 }
 
 .logout-btn:hover {
