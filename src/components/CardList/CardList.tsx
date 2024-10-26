@@ -5,7 +5,7 @@ import './cardlist.css'
 import axios from 'axios';
 import { baseUrl } from '../../service/config';
 import data from '../../utils/coarses.json'
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 
 interface Coarses  {
@@ -20,11 +20,30 @@ interface Coarses  {
 
 const CardList:React.FC = () => {
   const [courses, setCourse] = useState<Array<Coarses>>();
-  const query = 'python';
+  //const query = 'python';
 
   const navigate = useNavigate()
 
+  function useQuery() {
+    return new URLSearchParams(useLocation().search);
+  }
+
+  const query = useQuery();
+
+  console.log(query.get('q'));
+
   const getCourses = async() => {
+      axios
+        .get(`${baseUrl}/course/get-started`)
+        .then((res) => {
+          setCourse(res.data.data);
+        })
+        .catch((error) => {
+          console.log(error.error);
+        });
+  }
+
+  const getSearchCourse = async() => {
       axios
         .get(`${baseUrl}/course/read?searchQuery=${query}`)
         .then((res) => {
@@ -42,8 +61,12 @@ const CardList:React.FC = () => {
     //   navigate(`/course/${encodedId}`);
     // };
 
-    useEffect(()=> { 
-        getCourses();
+    useEffect(()=> {
+        if (query.get('q')) {
+            getSearchCourse();
+        } else {
+            getCourses();
+        }
     },[])
 
   return (
