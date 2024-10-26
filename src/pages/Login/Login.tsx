@@ -2,7 +2,7 @@ import React from 'react'
 
 import './login.css'
 import Logo from '../../components/Logo/Logo'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Formik, Field, Form, FormikHelpers, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import axios from 'axios';
@@ -20,16 +20,23 @@ const LoginSchema = Yup.object().shape({
 });
 
 const Login: React.FC = () => {
-  
+
+  const navigate = useNavigate();
+
   const handleSubmit = (users: Values) => {
     const userData = {
       userEmail: users.email,
       userPassword: users.password,
     };
     axios
-      .post(`${baseUrl}/auth/login`, { userData })
+      .post(`${baseUrl}/auth/login`, userData)
       .then((response) => {
-        console.log(response);
+        const user = response.data.data;
+        if (user) {
+          sessionStorage.setItem("user", user);
+
+          navigate("/");
+        }
       })
       .catch((error) => {
         console.log(error);

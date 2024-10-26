@@ -2,6 +2,7 @@
     display: flex;
     gap: 10px;
     width: 48%;
+    height: 200px;
     border: 1px solid rgba(0,0,0,0.75);
     border-radius: 20px;
 }
@@ -12,6 +13,7 @@
 }
 
 .card .image{
+    flex: 40%;
     width: 250px;
     line-height: 0;
     overflow: hidden;
@@ -26,6 +28,7 @@
 }
 
 .text-content {
+    flex: 60%;
     padding-block: 10px;
     padding-inline: 15px;
 }
@@ -37,6 +40,8 @@
     padding: 1px 10px;
     border-radius: 20px;
     border: 1px solid #0066ff;
+    text-transform: lowercase;
+    font-size: 14px;
 }
 
 .text-content .platform:hover{
@@ -46,23 +51,26 @@
 }
 
 .text-content h3{
-    font-size: 20px;
+    font-size: 16px;
     margin-block-end: 0;
     font-family: 'Courier New', Courier, monospace;
 }
 .text-content p{
-    font-size: 16px;
+    font-size: 12px;
 }
 
-.text-content button{
+.text-content .button{
+    text-decoration: none;
     border: 1px solid #0066ff;
     background: #fff;
     padding: 5px 15px;
     border-radius: 20px;
     cursor: pointer;
+    font-size: 16px;
+    color: #0066ff;
 }
 
-.text-content button:hover{
+.text-content .button:hover{
     background: #0066ff;
     color: #fff;
 }

@@ -1,0 +1,82 @@
+[
+    {
+        "courseId": "101",
+        "courseTitle": "Introduction to JavaScript",
+        "courseDescription": "Learn the basics of JavaScript, including variables, data types, functions, and more.",
+        "courseImage": "https://example.com/images/javascript-course.jpg",
+        "coursePlatform": "Udemy",
+        "courseUrl": "https://www.udemy.com/course/intro-to-javascript"
+    },
+    {
+        "courseId": "102",
+        "courseTitle": "Mastering Python",
+        "courseDescription": "An advanced course that covers Python programming, data analysis, and machine learning.",
+        "courseImage": "https://example.com/images/python-course.jpg",
+        "coursePlatform": "Coursera",
+        "courseUrl": "https://www.coursera.org/specializations/python"
+    },
+    {
+        "courseId": "103",
+        "courseTitle": "Web Development Bootcamp",
+        "courseDescription": "A complete guide to web development covering HTML, CSS, JavaScript, and backend technologies.",
+        "courseImage": "https://example.com/images/web-dev-course.jpg",
+        "coursePlatform": "Codecademy",
+        "courseUrl": "https://www.codecademy.com/learn/web-development"
+    },
+    {
+        "courseId": "104",
+        "courseTitle": "Data Science with R",
+        "courseDescription": "Learn how to perform data analysis and visualization using R programming language.",
+        "courseImage": "https://example.com/images/data-science-r-course.jpg",
+        "coursePlatform": "edX",
+        "courseUrl": "https://www.edx.org/course/data-science-r"
+    },
+    {
+        "courseId": "105",
+        "courseTitle": "React.js Essentials",
+        "courseDescription": "A comprehensive course on building interactive UIs using React.js.",
+        "courseImage": "https://example.com/images/react-course.jpg",
+        "coursePlatform": "Pluralsight",
+        "courseUrl": "https://www.pluralsight.com/courses/react-js"
+    },
+    {
+        "courseId": "106",
+        "courseTitle": "Java for Beginners",
+        "courseDescription": "Start your journey with Java programming, covering basic syntax, object-oriented programming, and more.",
+        "courseImage": "https://example.com/images/java-course.jpg",
+        "coursePlatform": "Udacity",
+        "courseUrl": "https://www.udacity.com/course/java-programming"
+    },
+    {
+        "courseId": "107",
+        "courseTitle": "Full Stack Development with MERN",
+        "courseDescription": "Learn to build full-stack applications using MongoDB, Express, React, and Node.js.",
+        "courseImage": "https://example.com/images/mern-course.jpg",
+        "coursePlatform": "LinkedIn Learning",
+        "courseUrl": "https://www.linkedin.com/learning/full-stack-development-mern"
+    },
+    {
+        "courseId": "108",
+        "courseTitle": "Artificial Intelligence: A Practical Approach",
+        "courseDescription": "Explore the world of AI, covering machine learning, neural networks, and natural language processing.",
+        "courseImage": "https://example.com/images/ai-course.jpg",
+        "coursePlatform": "Coursera",
+        "courseUrl": "https://www.coursera.org/specializations/ai"
+    },
+    {
+        "courseId": "109",
+        "courseTitle": "Cybersecurity Fundamentals",
+        "courseDescription": "Understand the basics of cybersecurity, including network security, cryptography, and risk management.",
+        "courseImage": "https://example.com/images/cybersecurity-course.jpg",
+        "coursePlatform": "edX",
+        "courseUrl": "https://www.edx.org/course/cybersecurity-basics"
+    },
+    {
+        "courseId": "110",
+        "courseTitle": "Mobile App Development with Flutter",
+        "courseDescription": "Learn to create beautiful, natively compiled applications for mobile from a single codebase using Flutter.",
+        "courseImage": "https://example.com/images/flutter-course.jpg",
+        "coursePlatform": "Udemy",
+        "courseUrl": "https://www.udemy.com/course/flutter-mobile-app-development"
+    }
+]

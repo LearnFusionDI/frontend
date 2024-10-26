@@ -35,9 +35,6 @@ const Dashboard:React.FC = () => {
             <WishCard />
             <WishCard />
             <WishCard />
-            <WishCard />
-            <WishCard />
-            <WishCard />
           </div>
         </div>
       </section>

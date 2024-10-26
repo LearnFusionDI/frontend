@@ -1,7 +1,7 @@
 import React from 'react'
 
 import './register.css'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Logo from '../../components/Logo/Logo';
 import { Formik, Field, Form, FormikHelpers, ErrorMessage } from "formik";
 import * as Yup from "yup";
@@ -26,6 +26,7 @@ const RegisterSchema = Yup.object().shape({
 });
 
 const Register:React.FC = () => {
+  const navigate = useNavigate();
 
   const handleSubmit = (users: Values) => {
       const userData = {
@@ -35,9 +36,14 @@ const Register:React.FC = () => {
           userLastName: users.lastname
       }
       axios
-        .post(`${baseUrl}/auth/register`, { userData })
+        .post(`${baseUrl}/auth/register`, userData)
         .then((response) => {
-          console.log(response);
+          const user = response.data.data;
+          if (user) {
+            sessionStorage.setItem("user", user);
+
+            navigate("/");
+          }
         })
         .catch((error) => {
           console.log(error);

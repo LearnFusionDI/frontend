@@ -22,7 +22,8 @@
     background: #fff;
 }
 
-.details .title-section .button-section button {
+.details .title-section .button-section .button {
+    text-decoration: none;
     background: #0066ff;
     color: #fff;
     padding: 10px 20px;
@@ -30,12 +31,13 @@
     width: fit-content;
     border-radius: 20px;
     transition: ease-in-out .2s;
+    font-size: 14px;
 }
 
 .details .title-section .button-section {
     min-width: 200px;
 }
-.details .title-section button:hover {
+.details .title-section .button:hover {
     border: 1px solid #0066ff;
     background: #fff;
     color: #0066ff;

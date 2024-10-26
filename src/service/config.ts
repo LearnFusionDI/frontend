@@ -1,4 +1,4 @@
-const baseUrl = "https://learn-fusion-backend.onrender.com";
+const baseUrl = "https://learnfusion.isaiahekundayo.com/";
 
 export {
     baseUrl
