@@ -51,7 +51,7 @@ const Search:React.FC = () => {
           </div>
         </div>
       </div>
-      <h3 className="card-list-title container">{`Search Result of ${query.get(
+      <h3 className="card-list-title container">{`Search Result for : ${query.get(
         "q"
       )}`}</h3>
       <CardList />

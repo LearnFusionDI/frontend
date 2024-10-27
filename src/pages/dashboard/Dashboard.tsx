@@ -5,6 +5,8 @@ import Navbar from '../../components/Navbar/Navbar'
 import Footer from '../../components/Footer/Footer'
 import WishCard from './WishCard'
 import { useNavigate } from 'react-router-dom'
+import axios, { AxiosRequestConfig } from 'axios'
+import { baseUrl } from '../../service/config'
 
 interface userSchema {
   userAuthToken: 'string',
@@ -22,21 +24,70 @@ interface userSchema {
   userUpdatedAt: 'string'
 }
 
+interface Courses {
+  courseId: string;
+  courseTitle: string;
+  courseDescription: string;
+  courseImage: string;
+  coursePlatform: string;
+  courseUrl: string;
+}
+
 const Dashboard:React.FC = () => {
    const [userData, setUserData] = useState<userSchema>();
+   const [courses, setCourses] = useState<Array<Courses>>()
 
    const navigate = useNavigate()
+   const user = sessionStorage.getItem("user");
+
+   const fetchCourse = async () => {
+
+    let userId, userAuthToken;
+      if(user) {
+        const userData = JSON.parse(user);
+        userId = userData.userId;
+        userAuthToken = userData.userAuthToken;
+      }
+      const config: AxiosRequestConfig = {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${userAuthToken}`,
+        },
+      };
+      axios.get(`${baseUrl}/course/readUserCourses?userId=${userId}`, config)
+      .then((res) => {
+          console.log(res.data);
+          setCourses(res.data.data.course);
+      })
+      .catch((error) => {
+        console.log(error.error)
+      });
+   }
+
+    const getCourse = async (courseId : string) => {
+      axios
+        .get(`${baseUrl}/course/readByCourseId?courseId=${courseId}`)
+        .then((res) => {
+          if (res.data.data) {
+            console.log(res.data)
+          } else {
+           console.log(res.data);
+          }
+        })
+        .catch((error) => {
+          console.log(error.error);
+        });
+    };
 
    useEffect(() => {
-     const user = sessionStorage.getItem("user");
-     
      if (user) {
        setUserData(JSON.parse(user));
+       fetchCourse()
      } else {
        navigate('/login');
      }
    }, []);
-
+console.log(courses)
   return (
     <div className="dashboard">
       <Navbar />
@@ -62,9 +113,9 @@ const Dashboard:React.FC = () => {
           </div>
           <div className="coarse-body">
             {/* <h4>Learn later</h4> */}
-            <WishCard />
-            <WishCard />
-            <WishCard />
+            {courses?.map((course) => (
+              <WishCard  course={course}/>
+            ))}
           </div>
         </div>
       </section>

@@ -1,3 +1,6 @@
 .search .hero {
     height: 40vh;
 }
+.search .card-list-title {
+    font-size: small;
+}

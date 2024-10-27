@@ -8,6 +8,7 @@
 
 .card-list-title{
     font-family: 'Courier New', Courier, monospace;
+    font-size: large;
 }
 
 @media (max-width: 576px) { 

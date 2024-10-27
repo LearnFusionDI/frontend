@@ -56,6 +56,10 @@
     color: #ee0547;
 }
 
+.Toastify {
+    font-size: small;
+}
+
 @media (max-width: 576px) { 
     .details .title-section {
         flex-direction: column;

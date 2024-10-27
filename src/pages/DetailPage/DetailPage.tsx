@@ -4,9 +4,10 @@ import './detail-page.css'
 import Navbar from '../../components/Navbar/Navbar'
 import Footer from '../../components/Footer/Footer';
 import { Link, useNavigate} from 'react-router-dom';
-import axios from 'axios';
+import axios, { AxiosRequestConfig } from 'axios';
 import { baseUrl } from '../../service/config';
-import { error } from 'console';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 interface course {
     courseId: string;
@@ -52,13 +53,33 @@ const DetailPage:React.FC = () => {
           courseId: course?.courseId,
           userId: userData.userId,
         };
-        axios.post(`${baseUrl}/course/save`, saveData)
-        .then(res => {
-          console.log(res);
-        })
-        .catch(error => {
-          console.log(error.error);
-        })
+        const config: AxiosRequestConfig = {
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${userData.userAuthToken}`
+          }
+        };
+        axios
+          .post(`${baseUrl}/course/save`, saveData, config)
+          .then((res) => {
+            if (!res.data.error) {
+                toast.success(res.data.responseMessage, {
+                  position: "top-right",
+                  autoClose: 3000, // milliseconds
+                });
+                console.log(res);
+            } else {
+              toast.error(res.data.responseMessage, {
+                position: "top-right",
+                autoClose: 3000, // milliseconds
+              });
+            }
+            
+          })
+          .catch((error) => {
+            console.log(error.error);
+            toast.error("Failed to submit form.");
+          });
       } else {
         navigate('/login');
       }
@@ -115,7 +136,7 @@ const DetailPage:React.FC = () => {
           </p>
         </div>
       </section>
-
+      <ToastContainer />
       <Footer />
     </div>
   );

@@ -41,7 +41,7 @@ const CourseSlider: React.FC<Props> = ({ courses }) => {
           },
           1024: {
             slidesPerView: 3,
-            spaceBetween: 30,
+            spaceBetween: 10,
           },
         }}
         modules={[FreeMode]}

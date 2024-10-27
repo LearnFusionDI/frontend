@@ -20,15 +20,6 @@ interface Courses  {
 
 const CardList:React.FC = () => {
   const [courses, setCourse] = useState<Array<Courses>>();
-  const [arts, setArts] = useState<Array<Courses>>()
-  const [dataScience, setDataScience] = useState<Array<Courses>>();
-  const [finance, setFinance] = useState<Array<Courses>>()
-  const [health, setHealth] = useState<Array<Courses>>()
-  const [mathematics, setMathematics] = useState<Array<Courses>>()
-  const [programming, setProgramming] = useState<Array<Courses>>()
-  const [science, setScience] = useState<Array<Courses>>()
-  const [technology, setTechnology] = useState<Array<Courses>>()
-  const [personalDevelopment, setPersonalDevelopment] = useState<Array<Courses>>();
 
 
   function useQuery() {
