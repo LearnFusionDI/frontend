@@ -1,4 +1,4 @@
-const baseUrl = "https://learnfusion.isaiahekundayo.com/";
+const baseUrl = "https://learnfusion.isaiahekundayo.com";
 
 export {
     baseUrl

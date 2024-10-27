@@ -2,7 +2,7 @@ import React from 'react'
 import coarseImage from '../../../images/coarseImage.png'
 
 import './card.css'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 interface Props {
   course: {
@@ -12,12 +12,25 @@ interface Props {
     courseImage: string;
     coursePlatform: string;
     courseUrl: string;
-  },
-  // ?getCourse(param: string): void
+  }
 }
 
-const Card: React.FC<Props> = ({ course, }) => {
+interface Course {
+    courseId: string;
+    courseTitle: string;
+    courseDescription: string;
+    courseImage: string;
+    coursePlatform: string;
+    courseUrl: string;
+  }
 
+const Card: React.FC<Props> = ({ course, }) => {
+  const navigate = useNavigate();
+
+  const viewCourse = (course: Course) => {
+    sessionStorage.setItem('course', JSON.stringify(course));
+    navigate(`/course/${encodeURIComponent(course.courseId)}`);
+  }
   return (
     <div className="card">
       <div className="image">
@@ -27,9 +40,9 @@ const Card: React.FC<Props> = ({ course, }) => {
         <p className="platform">{course.coursePlatform}</p>
         <h3>{course.courseTitle.substring(0, 70)}</h3>
         {/* <p>{course.courseDescription.substring(0,50)}</p> */}
-        <Link className="button" to={`/course/${encodeURIComponent(course.courseId)}`}>
+        <button className="button" onClick={() => viewCourse(course)}>
           view course
-        </Link>
+        </button>
       </div>
     </div>
   );

@@ -36,11 +36,24 @@
 
 .details .title-section .button-section {
     min-width: 200px;
+    display: flex;
+    gap: 5px;
 }
 .details .title-section .button:hover {
     border: 1px solid #0066ff;
     background: #fff;
     color: #0066ff;
+}
+
+.details .title-section .button-section .watchLater {
+    background: #ee0547 !important;
+    border: 1px solid #ee0547 !important;
+    cursor: pointer;
+}
+
+.details .title-section .button-section .watchLater:hover {
+    background: #fff !important;
+    color: #ee0547;
 }
 
 @media (max-width: 576px) { 

@@ -2,12 +2,11 @@ import React, { useEffect, useState } from 'react'
 
 import './detail-page.css'
 import Navbar from '../../components/Navbar/Navbar'
-import coarseImage from "../../images/coarseImage.png";
 import Footer from '../../components/Footer/Footer';
-import data from "../../utils/coarses.json";
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate} from 'react-router-dom';
 import axios from 'axios';
 import { baseUrl } from '../../service/config';
+import { error } from 'console';
 
 interface course {
     courseId: string;
@@ -21,30 +20,50 @@ interface course {
 const DetailPage:React.FC = () => {
   const [course, setCourse] = useState<course>();
 
-  const params = useParams();
-  const courseId = params.courseId ? params.courseId : '';
-  console.log(decodeURIComponent(courseId));
+  const navigate = useNavigate()
+  let courseData: course;
+  const courseString = sessionStorage.getItem("course");
+
+  if (courseString) {
+    courseData = JSON.parse(courseString);
+  }
 
   const getCourse = async () => {
-    //const cons = await data.find((course) => course.courseId === courseId);
-    const courseItem = await localStorage.getItem('course');
-    
-    // if (courseItem) {
-    //   try {
-    //     const parsedCourse: course = JSON.parse(courseItem);
-    //     setCourse(parsedCourse); // Ensure the type matches
-    //   } catch (error) {
-    //     console.error("Failed to parse course item:", error);
-    //   }
-    // }
     axios
-      .get(`${baseUrl}/course/readByCourseId?courseId=${decodeURIComponent(courseId)}`)
+      .get(`${baseUrl}/course/readByCourseId?courseId=${courseData.courseId}`)
       .then((res) => {
-        console.log(res.data.data);
-        setCourse(res.data.data);
+        if (res.data.data) {
+          setCourse(res.data.data);
+        } else {
+          setCourse(courseData);
+        }
       })
-      .catch((error) => {});
+      .catch((error) => {
+          setCourse(courseData);
+          console.log(error.error);
+      });
   };
+
+  const savesCourse = () => {
+      const user = sessionStorage.getItem('user');
+      if (user) {
+        const userData = JSON.parse(user);
+        const saveData = {
+          courseId: course?.courseId,
+          userId: userData.userId,
+        };
+        axios.post(`${baseUrl}/course/save`, saveData)
+        .then(res => {
+          console.log(res);
+        })
+        .catch(error => {
+          console.log(error.error);
+        })
+      } else {
+        navigate('/login');
+      }
+      
+  }
 
   useEffect(() => {
       getCourse();
@@ -65,14 +84,21 @@ const DetailPage:React.FC = () => {
         <div className="title-section">
           <h4>{course?.courseTitle}</h4>
           <div className="button-section">
-            <Link className='button' target='_blank' to={`${course?.courseUrl}`}>View On site</Link>
+            <Link
+              className="button"
+              target="_blank"
+              to={`${course?.courseUrl}`}
+            >
+              View On site
+            </Link>
+            <button className="button watchLater" onClick={() => savesCourse()}>
+              watch later
+            </button>
           </div>
         </div>
         <hr />
         <div className="content">
-          <p>
-            {course?.courseDescription}
-          </p>
+          <p>{course?.courseDescription}</p>
           <p>
             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Neque, est
             odit quos ea eligendi accusantium assumenda aliquid architecto eius

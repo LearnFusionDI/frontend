@@ -38,26 +38,26 @@ const CardList:React.FC = () => {
   const query = useQuery();
   console.log(query.get("q"));
 
-  const getCourses = async() => {
-      axios
-        .get(`${baseUrl}/course/get-started`)
-        .then((res) => {
-          const arts = res.data.data.category['Arts'];
-          console.log(arts);
-          const data_science = res.data.data.category["Data Science"];
-          const finance = res.data.data.category['Finance'];
-          const health = res.data.data.category['Health'];
-          const mathematics = res.data.data.category['Mathematics'];
-          const personal_development = res.data.data.category['Personal Development'];
-          const programming = res.data.data.category['Programming'];
-          const science = res.data.data.category['Science'];
-          const technology = res.data.data.category['Technology'];
-          setCourse(arts);
-        })
-        .catch((error) => {
-          console.log(error.error);
-        });
-  }
+  // const getCourses = async() => {
+  //     axios
+  //       .get(`${baseUrl}/course/get-started`)
+  //       .then((res) => {
+  //         const arts = res.data.data.category['Arts'];
+  //         console.log(arts);
+  //         const data_science = res.data.data.category["Data Science"];
+  //         const finance = res.data.data.category['Finance'];
+  //         const health = res.data.data.category['Health'];
+  //         const mathematics = res.data.data.category['Mathematics'];
+  //         const personal_development = res.data.data.category['Personal Development'];
+  //         const programming = res.data.data.category['Programming'];
+  //         const science = res.data.data.category['Science'];
+  //         const technology = res.data.data.category['Technology'];
+  //         setCourse(arts);
+  //       })
+  //       .catch((error) => {
+  //         console.log(error.error);
+  //       });
+  // }
 
   const getSearchCourse = async() => {
       axios
@@ -73,8 +73,6 @@ const CardList:React.FC = () => {
     useEffect(()=> {
         if (query.get('q')) {
             getSearchCourse();
-        } else {
-            getCourses();
         }
     },[])
 
