@@ -36,7 +36,7 @@ const Hero: React.FC = () => {
               id="searchQuery"
               onChange={handleInputChange}
               name="searchQuery"
-              placeholder="Search any coarse..."
+              placeholder="Search any course..."
             />
             <button onClick={() => sendSearchValue()}>
               <FiSearch />
