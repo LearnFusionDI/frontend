@@ -7,6 +7,8 @@ import WishCard from './WishCard'
 import { useNavigate } from 'react-router-dom'
 import axios, { AxiosRequestConfig } from 'axios'
 import { baseUrl } from '../../service/config'
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 interface userSchema {
   userAuthToken: 'string',
@@ -41,7 +43,6 @@ const Dashboard:React.FC = () => {
    const user = sessionStorage.getItem("user");
 
    const fetchCourse = async () => {
-
     let userId, userAuthToken;
       if(user) {
         const userData = JSON.parse(user);
@@ -64,14 +65,32 @@ const Dashboard:React.FC = () => {
       });
    }
 
-    const getCourse = async (courseId : string) => {
+    const removeCourse = async(courseId: string, userId:string | undefined, userToken:string | undefined) => {
+      const data = {
+        courseId,
+        userId,
+      };
+      const config: AxiosRequestConfig = {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${userToken}`,
+        },
+      };
       axios
-        .get(`${baseUrl}/course/readByCourseId?courseId=${courseId}`)
+        .post(`${baseUrl}/course/remove`, data, config)
         .then((res) => {
-          if (res.data.data) {
-            console.log(res.data)
+          console.log(res.data);
+          if (!res.data.error) {
+            toast.success(res.data.responseMessage, {
+              position: "top-right",
+              autoClose: 3000, // milliseconds
+            });
+            fetchCourse();
           } else {
-           console.log(res.data);
+            toast.error(res.data.responseMessage, {
+              position: "top-right",
+              autoClose: 3000, // milliseconds
+            });
           }
         })
         .catch((error) => {
@@ -87,7 +106,7 @@ const Dashboard:React.FC = () => {
        navigate('/login');
      }
    }, []);
-console.log(courses)
+
   return (
     <div className="dashboard">
       <Navbar />
@@ -114,11 +133,12 @@ console.log(courses)
           <div className="coarse-body">
             {/* <h4>Learn later</h4> */}
             {courses?.map((course) => (
-              <WishCard  course={course}/>
+              <WishCard  course={course} userId={userData?.userId} userToken={userData?.userAuthToken} removeCourse={removeCourse}/>
             ))}
           </div>
         </div>
       </section>
+      <ToastContainer />
       <Footer />
     </div>
   );

@@ -31,16 +31,20 @@ const CourseSlider: React.FC<Props> = ({ courses }) => {
         spaceBetween={10}
         freeMode={true}
         breakpoints={{
+          330: {
+            slidesPerView: 1,
+            spaceBetween: 10,
+          },
           530: {
             slidesPerView: 1,
             spaceBetween: 10,
           },
           640: {
-            slidesPerView: 2,
+            slidesPerView: 1,
             spaceBetween: 10,
           },
           1024: {
-            slidesPerView: 3,
+            slidesPerView: 2,
             spaceBetween: 10,
           },
         }}

@@ -67,7 +67,7 @@ const DetailPage:React.FC = () => {
                   position: "top-right",
                   autoClose: 3000, // milliseconds
                 });
-                console.log(res);
+
             } else {
               toast.error(res.data.responseMessage, {
                 position: "top-right",
