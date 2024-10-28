@@ -28,6 +28,7 @@ const Card: React.FC<Props> = ({ course, }) => {
   const navigate = useNavigate();
 
   const viewCourse = (course: Course) => {
+    sessionStorage.setItem('courseId', course.courseId);
     sessionStorage.setItem('course', JSON.stringify(course));
     navigate(`/course/${encodeURIComponent(course.courseId)}`);
   }

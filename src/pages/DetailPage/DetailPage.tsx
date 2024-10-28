@@ -24,25 +24,30 @@ const DetailPage:React.FC = () => {
   const navigate = useNavigate()
   let courseData: course;
   const courseString = sessionStorage.getItem("course");
+  const courseId = sessionStorage.getItem('courseId');
+  console.log(courseId);
 
   if (courseString) {
     courseData = JSON.parse(courseString);
   }
 
   const getCourse = async () => {
-    axios
-      .get(`${baseUrl}/course/readByCourseId?courseId=${courseData.courseId}`)
-      .then((res) => {
-        if (res.data.data) {
-          setCourse(res.data.data);
-        } else {
-          setCourse(courseData);
-        }
-      })
-      .catch((error) => {
-          setCourse(courseData);
-          console.log(error.error);
-      });
+
+    setCourse(courseData);
+    // axios
+    //   .get(`${baseUrl}/course/readByCourseId?courseId=${x}`)
+    //   .then((res) => {
+    //     if (res.data) {
+    //       console.log(res.data)
+    //       setCourse(res.data);
+    //     } else {
+    //       setCourse(courseData);
+    //     }
+    //   })
+    //   .catch((error) => {
+    //       setCourse(courseData);
+    //       console.log(error.error);
+    //   });
   };
 
   const savesCourse = () => {
@@ -77,7 +82,7 @@ const DetailPage:React.FC = () => {
             
           })
           .catch((error) => {
-            console.log(error.error);
+            console.log(error);
             toast.error("Failed to submit form.");
           });
       } else {
@@ -120,7 +125,7 @@ const DetailPage:React.FC = () => {
         <hr />
         <div className="content">
           <p>{course?.courseDescription}</p>
-          <p>
+          {/* <p>
             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Neque, est
             odit quos ea eligendi accusantium assumenda aliquid architecto eius
             consectetur veritatis dolores? Harum quidem, excepturi incidunt,
@@ -133,7 +138,7 @@ const DetailPage:React.FC = () => {
             maiores dolorum quo eos itaque repudiandae optio exercitationem ab,
             modi eius delectus, sed impedit expedita et magnam minima! Ullam ab
             fuga, nulla perspiciatis alias modi?
-          </p>
+          </p> */}
         </div>
       </section>
       <ToastContainer />
