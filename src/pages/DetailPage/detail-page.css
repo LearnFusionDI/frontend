@@ -13,6 +13,15 @@
     font-size: large;
 }
 
+.content iframe {
+    display: block; 
+    width: 100%;
+    height: 500px;
+    border: none; 
+    overflow-y: auto; 
+    overflow-x: hidden;
+}
+
 .details .title-section {
     display: flex;
     justify-content: space-between;
@@ -64,5 +73,6 @@
     .details .title-section {
         flex-direction: column;
         align-items: start;
+        padding-bottom: 20px;
     }
 }

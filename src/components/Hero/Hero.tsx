@@ -24,7 +24,7 @@ const Hero: React.FC = () => {
         <div className="text-section">
           <h1>Welcome to Learn Fusion</h1>
           <p>
-            The Platform that provide access to knowledge from anywhere in the
+            The Platform that provide access to Courses from anywhere in the
             world.
           </p>
         </div>

@@ -26,10 +26,10 @@ const Search:React.FC = () => {
    }
 
    const query = useQuery();
-
    const [queryValue, setQueryValue] = useState<string | null>(query.get("q"));
+
    const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
-     setSearchValue(event.target.value);
+      setSearchValue(event.target.value);
    };
 
    const getSearchCourse = async () => {
@@ -41,7 +41,7 @@ const Search:React.FC = () => {
       axios
         .get(`${baseUrl}/course/read?searchQuery=${queryValue}`)
         .then((res) => {
-          setCourse(res.data.data);
+          setCourse(res.data.data.course);
         })
         .catch((error) => {
           console.log(error.error);
@@ -50,10 +50,11 @@ const Search:React.FC = () => {
 
    useEffect(() => {
      if (query.get("q")) {
-       getSearchCourse();
+        getSearchCourse();
      }
    }, []);
 
+   console.log(courses)
   return (
     <main>
       <Navbar />
@@ -80,7 +81,7 @@ const Search:React.FC = () => {
         </div>
       </div>
       <h3 className="card-list-title container">{`Search Result for : ${queryValue}`}</h3>
-      <CardList courses={courses} />
+      {courses?.length && <CardList courses={courses} /> }
     </main>
   );
 }

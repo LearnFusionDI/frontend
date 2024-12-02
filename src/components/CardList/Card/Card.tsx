@@ -24,7 +24,7 @@ interface Course {
     courseUrl: string;
   }
 
-const Card: React.FC<Props> = ({ course, }) => {
+const Card: React.FC<Props> = ({ course }) => {
   const navigate = useNavigate();
 
   const viewCourse = (course: Course) => {

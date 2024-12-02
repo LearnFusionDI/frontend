@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import DOMPurify from 'dompurify';
 
 import './detail-page.css'
 import Navbar from '../../components/Navbar/Navbar'
@@ -8,6 +9,7 @@ import axios, { AxiosRequestConfig } from 'axios';
 import { baseUrl } from '../../service/config';
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Reviews from '../../components/Reviews/Reviews';
 
 interface course {
     courseId: string;
@@ -25,7 +27,6 @@ const DetailPage:React.FC = () => {
   let courseData: course;
   const courseString = sessionStorage.getItem("course");
   const courseId = sessionStorage.getItem('courseId');
-  console.log(courseId);
 
   if (courseString) {
     courseData = JSON.parse(courseString);
@@ -49,9 +50,8 @@ const DetailPage:React.FC = () => {
     //       console.log(error.error);
     //   });
   };
-
+  const user = sessionStorage.getItem('user');
   const savesCourse = () => {
-      const user = sessionStorage.getItem('user');
       if (user) {
         const userData = JSON.parse(user);
         const saveData = {
@@ -70,13 +70,13 @@ const DetailPage:React.FC = () => {
             if (!res.data.error) {
                 toast.success(res.data.responseMessage, {
                   position: "top-right",
-                  autoClose: 3000, // milliseconds
+                  autoClose: 3000,
                 });
 
             } else {
               toast.error(res.data.responseMessage, {
                 position: "top-right",
-                autoClose: 3000, // milliseconds
+                autoClose: 3000,
               });
             }
             
@@ -86,16 +86,50 @@ const DetailPage:React.FC = () => {
             toast.error("Failed to submit form.");
           });
       } else {
+        sessionStorage.setItem('previousUrl', window.location.pathname);
         navigate('/login');
       }
       
   }
 
+  const sendMonitorCourse = async() => {
+    if(user) {
+      const userData = JSON.parse(user);
+      const monitorCourseData = {
+          monitorCourseId: courseData.courseId,
+          monitorCourseTitle: courseData.courseTitle,
+          monitorUserId: userData.userId,
+          monitorAction: "MONITORING_UPDATE"
+      }
+
+      const config: AxiosRequestConfig = {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${userData.userAuthToken}`
+        }
+      };
+
+      axios
+          .post(`${baseUrl}/monitoring/saveCourseCheck`, monitorCourseData, config)
+          .then((res) => {
+            if(res.data.responseCode === '200') {
+              console.log(res.data.responseMessage)
+            }
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+    }
+  }
+
   useEffect(() => {
       getCourse();
+      setTimeout(()=>{
+        sendMonitorCourse();
+      }, 2000)
   }, []);
-
-
+  console.log(course)
+  const youtubeId = course?.coursePlatform === 'YOUTUBE' ? course.courseUrl.split('=')[1] : ''
   return (
     <div className="details">
       <Navbar />
@@ -118,27 +152,26 @@ const DetailPage:React.FC = () => {
               View On site
             </Link>
             <button className="button watchLater" onClick={() => savesCourse()}>
-              watch later
+                watch later
             </button>
           </div>
         </div>
         <hr />
         <div className="content">
-          <p>{course?.courseDescription}</p>
-          {/* <p>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Neque, est
-            odit quos ea eligendi accusantium assumenda aliquid architecto eius
-            consectetur veritatis dolores? Harum quidem, excepturi incidunt,
-            quaerat earum amet temporibus expedita qui maiores nobis eos
-            corrupti iste consequatur sit reiciendis laudantium perferendis
-            accusamus quod a? Aspernatur dignissimos accusantium repudiandae,
-            amet mollitia blanditiis culpa expedita perspiciatis corporis sit
-            voluptatem veritatis laudantium quibusdam ea aliquam beatae, quae
-            fugit natus corrupti ad dicta quidem placeat sunt soluta. Esse
-            maiores dolorum quo eos itaque repudiandae optio exercitationem ab,
-            modi eius delectus, sed impedit expedita et magnam minima! Ullam ab
-            fuga, nulla perspiciatis alias modi?
-          </p> */}
+          {(course?.coursePlatform === 'YOUTUBE' && youtubeId) &&
+              <iframe
+                src={`https://www.youtube.com/embed/${youtubeId}?controls=1`}
+              ></iframe>
+          }
+          <div
+            dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(course?.courseDescription || '') }}
+          />
+        </div>
+        <div>
+          {course && 
+            <Reviews courseId={course.courseId}/>
+          }
+          
         </div>
       </section>
       <ToastContainer />

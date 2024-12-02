@@ -2,10 +2,6 @@ import React, { useEffect, useState } from 'react'
 import Card from './Card/Card'
 
 import './cardlist.css'
-import axios from 'axios';
-import { baseUrl } from '../../service/config';
-import data from '../../utils/coarses.json'
-import { useLocation } from 'react-router-dom';
 
 
 interface Course  {

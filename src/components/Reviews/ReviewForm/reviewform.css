@@ -1,0 +1,79 @@
+.review-form {
+    box-shadow: -4px 3px 13px -5px rgba(0,0,0,0.75);
+    padding: 20px;
+}
+
+.review-form .review-input-group {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.review-form .review-input-group:first-child{
+    margin-bottom: 10px;
+}
+
+.review-form .review-input-group label {
+    font-size: large;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.review-form .review-input-group textarea {
+    height: 150px;
+    border: 1px solid #555454;
+    padding: 10px;
+    border-radius: 10px;
+    resize: none;
+    font-size: large;
+    outline: none;
+}
+
+.review-form .review-input-group select{
+    border: 1px solid #555454;
+    padding: 10px;
+    border-radius: 10px;
+    width: 50%;
+}
+
+.review-form .review-input-group textarea.invalid {
+    border: 1px solid rgb(240, 90, 90);
+}
+
+.review-form .review-input-group textarea:focus-visible,select:focus-visible {
+    border: 1px solid #006fff;
+}
+
+.review-form .review-submit{
+    padding: 10px 20px;
+    border-radius: 10px;
+    background: #006fff;
+    color: #fff;
+    border: 1px solid #006fff;
+    font-size: large;
+    margin-top: 10px;
+    transition: ease-in-out .2s;
+}
+
+.review-form .review-submit:hover {
+    border: 1px solid #006fff;
+    background-color: #fff;
+    color: #006fff;
+    cursor: pointer;
+}
+
+.button-section {
+    display: flex;
+    justify-content: space-between;
+}
+
+.button-section p{
+    font-size: 16px;
+    color: rgb(51, 75, 67);
+}
+
+@media screen and (max-width: 576px) { 
+    .button-section {
+        flex-direction: column;
+    }
+}

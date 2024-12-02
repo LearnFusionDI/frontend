@@ -35,8 +35,12 @@ const Login: React.FC = () => {
         console.log(user);
         if (user) {
           sessionStorage.setItem("user", JSON.stringify(user));
-
-          navigate("/");
+          const previousUrl = sessionStorage.getItem('previousUrl');
+          if(previousUrl) {
+            navigate(previousUrl);
+          } else {
+            navigate("/");
+          }
         }
       })
       .catch((error) => {
