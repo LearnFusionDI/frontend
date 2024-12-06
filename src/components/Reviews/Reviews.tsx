@@ -5,7 +5,7 @@ import Review from './Review/Review';
 import ReviewForm from './ReviewForm/ReviewForm';
 import axios from 'axios';
 import { baseUrl } from '../../service/config';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 interface userSchema {
   userAuthToken: 'string',

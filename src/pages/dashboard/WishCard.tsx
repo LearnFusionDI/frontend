@@ -1,9 +1,5 @@
 import React from 'react'
-import coarseImage from "../../images/coarseImage.png";
 import { useNavigate } from 'react-router-dom';
-import axios, { AxiosRequestConfig } from 'axios';
-import { baseUrl } from '../../service/config';
-import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 interface Props {

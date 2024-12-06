@@ -1,8 +1,7 @@
 import React from 'react'
-import coarseImage from '../../../images/coarseImage.png'
 
 import './card.css'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 interface Props {
   course: {

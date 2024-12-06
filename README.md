@@ -29,6 +29,4 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 Compiles the app for production and outputs it to the `build folder`. It properly bundles React in production mode and optimizes the build for maximum performance.The build is minified, and the filenames contain hashes, ready to be deployed to a production server.
 
-### Basic Usage of the app
 
-After successfully setting up the project and run, you will be greated with a home page of the site, where we listed a category of courses for you to start exploring 

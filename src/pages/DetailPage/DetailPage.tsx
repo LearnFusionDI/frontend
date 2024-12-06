@@ -26,7 +26,6 @@ const DetailPage:React.FC = () => {
   const navigate = useNavigate()
   let courseData: course;
   const courseString = sessionStorage.getItem("course");
-  const courseId = sessionStorage.getItem('courseId');
 
   if (courseString) {
     courseData = JSON.parse(courseString);
