@@ -46,17 +46,18 @@
 }
 
 
-.review .review-message .edit-review a{
-    text-decoration: none;
+.review .review-message .edit-review button{
+    border: none;
     padding: 5px 10px;
     background-color: crimson;
     border-radius: 5px;
     color: #fff;
     transition: ease-in-out .2s;
     width: fit-content;
+    cursor: pointer;
  }
 
- .review .review-message .edit-review a:hover{
+ .review .review-message .edit-review button:hover{
     border: 1px solid crimson;
     background-color: #fff;
     color: crimson;

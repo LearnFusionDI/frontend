@@ -38,7 +38,6 @@ const Home: React.FC = () => {
       axios
        .get(`${baseUrl}/monitoring/getUserCourseRecommendation?userId=${userId}`)
        .then((res) => {
-          console.log(res.data.data.course)
           setRecommendCourses(res.data.data.course);
        })
        .catch((error) => {

@@ -62,6 +62,13 @@
     cursor: pointer;
 }
 
+.review-form .success-message {
+    color: rgb(7, 81, 56);
+}
+
+.review-form .error-message {
+    color: rgb(207, 72, 72);
+}
 .button-section {
     display: flex;
     justify-content: space-between;

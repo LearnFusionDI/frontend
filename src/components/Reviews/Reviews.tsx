@@ -56,7 +56,6 @@ const Reviews:React.FC<Props> = ({courseId}) => {
   const getReviews = async (id: string) => {
      axios.get(`${baseUrl}/feedback/readCourseFeedback?courseId=${encodeURIComponent(id)}`)
        .then((res) => {
-          console.log(res.data.data.feedback[0])
           setReviews(res.data.data.feedback);
        })
        .catch((error) => {
@@ -81,14 +80,14 @@ const Reviews:React.FC<Props> = ({courseId}) => {
 
   const reviewCount = reviews ? reviews.length : 0;
   const rating = reviews ? reviews.reduce((total, feedback) => total + feedback.feedbackRating, 0) : 0;
-  const averageRating = (rating / reviewCount).toFixed(2)
+  const averageRating = (rating / reviewCount).toFixed(1)
 
   return (
     <div className='container'>
         <div className='reviews-rating'>
           <h3 className='review-title'>Reviews({reviewCount})</h3>
           {reviewCount > 0 && 
-            <h3 className='review-title'>Average Rating: {averageRating} && Total:  {rating}</h3>
+            <h3 className='review-title'>Rating: {averageRating} / 5</h3>
           }
         </div>
         <hr/>

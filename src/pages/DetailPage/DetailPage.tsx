@@ -128,7 +128,7 @@ const DetailPage:React.FC = () => {
         sendMonitorCourse();
       }, 2000)
   }, []);
-  console.log(course)
+
   const youtubeId = course?.coursePlatform === 'YOUTUBE' ? course.courseUrl.split('=')[1] : ''
   return (
     <div className="details">
